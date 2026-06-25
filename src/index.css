@@ -30,7 +30,7 @@
 
 .harrods-header {
   background: rgba(255, 255, 255, 0.98);
-  border-bottom: 1px solid #e6e6e6;
+  border-bottom: 3px solid #e6e6e6;
   backdrop-filter: blur(6px);
 }
 

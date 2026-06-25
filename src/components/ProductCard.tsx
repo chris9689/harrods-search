@@ -89,10 +89,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({ item, onVisualSearch }
       </div>
 
       {/* Info Container */}
-      <div className="mt-3 space-y-1">
+      <div className="mt-3 space-y-1 text-center">
         {brand ? <p className="text-[10px] text-[#777] uppercase tracking-[0.15em] font-bold">{brand}</p> : null}
         <h3 className="text-[13px] font-medium text-[#171717] line-clamp-2 leading-snug">{title}</h3>
-        <div className="flex flex-wrap items-baseline gap-2">
+        <div className="flex flex-wrap items-baseline justify-center gap-2">
           {item.discount_percentage ? (
             <>
               <p className="text-[14px] font-bold text-[#111]">{price} {currency}</p>
@@ -102,7 +102,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ item, onVisualSearch }
             <p className="text-[14px] font-bold text-[#111]">{price} {currency}</p>
           )}
         </div>
-        <button className="text-[10px] uppercase tracking-[0.16em] text-[#555] hover:text-harrods-green transition-colors pt-1 inline-flex items-center gap-1">
+        <button className="text-[10px] uppercase tracking-[0.16em] text-[#555] hover:text-harrods-green transition-colors pt-1 inline-flex items-center justify-center gap-1">
           <ShoppingBag size={12} /> Add to bag
         </button>
       </div>
