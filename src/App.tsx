@@ -204,8 +204,8 @@ export default function App() {
           
           <div className="flex items-center gap-6 text-[11px] font-bold uppercase tracking-[0.15em] text-[#666]">
             <span className="hidden sm:inline">Sort by:</span>
-            <div className="relative group cursor-pointer border-b border-transparent hover:border-black transition-all">
-              <button className="flex items-center gap-1.5 text-[#111] py-1">
+            <div className="relative group cursor-pointer border-b border-transparent hover:border-harrods-green transition-all">
+              <button className="flex items-center gap-1.5 text-harrods-green py-1">
                 Recommended <ChevronDown size={14} />
               </button>
             </div>
@@ -234,7 +234,7 @@ export default function App() {
                           <div className="relative flex items-center justify-center">
                             <input 
                               type="checkbox" 
-                              className="peer h-4 w-4 border-[#bdbdbd] rounded-none checked:bg-black checked:border-black transition-all appearance-none border" 
+                              className="peer h-4 w-4 border-[#bdbdbd] rounded-none checked:bg-harrods-green checked:border-harrods-green transition-all appearance-none border" 
                               checked={selectedFilters.some(f => f.field === facet.key && f.values.includes(opt.value))}
                               onChange={() => toggleFilter(facet.key, opt.value)}
                             />
@@ -390,7 +390,7 @@ export default function App() {
                             onClick={() => toggleFilter(facet.key, opt.value)}
                             className={`text-left px-4 py-3 text-[11px] font-bold uppercase tracking-widest border transition-all ${
                               selectedFilters.some(f => f.field === facet.key && f.values.includes(opt.value))
-                                ? 'bg-black text-white border-black'
+                                ? 'bg-harrods-green text-white border-harrods-green'
                                 : 'bg-white text-[#333] border-[#ddd]'
                             }`}
                           >

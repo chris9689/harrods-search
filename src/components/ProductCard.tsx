@@ -68,7 +68,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ item, onVisualSearch }
 
         {/* Wishlist Button */}
         <button className="absolute top-3 right-3 p-1.5 rounded-full bg-white/90 hover:bg-white transition-colors border border-[#e2e2e2]">
-          <Heart size={17} className="text-[#222]" />
+          <Heart size={17} className="text-harrods-green" />
         </button>
 
         {onVisualSearch && isHovered && (
@@ -83,7 +83,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ item, onVisualSearch }
             className="absolute bottom-3 right-3 bg-white/90 border border-[#dcdcdc] p-2 hover:bg-white transition-colors"
             title="Search with this product image"
           >
-            <Camera size={14} className="text-[#333]" />
+            <Camera size={14} className="text-harrods-green" />
           </button>
         )}
       </div>
@@ -102,7 +102,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ item, onVisualSearch }
             <p className="text-[14px] font-bold text-[#111]">{price} {currency}</p>
           )}
         </div>
-        <button className="text-[10px] uppercase tracking-[0.16em] text-[#555] hover:text-black transition-colors pt-1 inline-flex items-center gap-1">
+        <button className="text-[10px] uppercase tracking-[0.16em] text-[#555] hover:text-harrods-green transition-colors pt-1 inline-flex items-center gap-1">
           <ShoppingBag size={12} /> Add to bag
         </button>
       </div>

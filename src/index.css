@@ -2,8 +2,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
 
 @theme {
-  --color-harrods-green: #173b2f;
-  --color-harrods-forest: #0e2b21;
+  --color-harrods-green: #8a7252;
+  --color-harrods-forest: #6f5a41;
   --color-harrods-cream: #f8f5ef;
   --color-harrods-gold: #b79a5d;
   --color-harrods-text: #1f2a23;
@@ -40,33 +40,33 @@
 }
 
 .harrods-search-input:focus {
-  border-color: #222;
-  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.06);
+  border-color: var(--color-harrods-green);
+  box-shadow: 0 0 0 2px rgba(138, 114, 82, 0.18);
 }
 
 .harrods-pill-button {
-  background: #111;
+  background: var(--color-harrods-green);
   color: #fff;
-  border: 1px solid #111;
+  border: 1px solid var(--color-harrods-green);
 }
 
 .harrods-pill-button:hover {
-  background: #000;
+  background: var(--color-harrods-forest);
 }
 
 .harrods-subtle-button {
   border: 1px solid #d6d6d6;
-  color: #202020;
+  color: var(--color-harrods-green);
   background: #fff;
 }
 
 .harrods-subtle-button:hover {
-  border-color: #888;
+  border-color: var(--color-harrods-green);
   background: #fff;
 }
 
 .harrods-filter-title {
-  color: #111;
+  color: var(--color-harrods-green);
   letter-spacing: 0.16em;
 }
 
