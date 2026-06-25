@@ -3,7 +3,7 @@
 
 @theme {
   --color-harrods-green: #8a7252;
-  --color-harrods-forest: #6f5a41;
+  --color-harrods-forest: #304835;
   --color-harrods-cream: #f8f5ef;
   --color-harrods-gold: #b79a5d;
   --color-harrods-text: #1f2a23;
@@ -30,7 +30,7 @@
 
 .harrods-header {
   background: rgba(255, 255, 255, 0.98);
-  border-bottom: 3px solid #e6e6e6;
+  border-bottom: 5px solid var(--color-harrods-forest);
   backdrop-filter: blur(6px);
 }
 
