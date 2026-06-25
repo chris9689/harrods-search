@@ -95,11 +95,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({ item, onVisualSearch }
         <div className="flex flex-wrap items-baseline justify-center gap-2">
           {item.discount_percentage ? (
             <>
-              <p className="text-[14px] font-bold text-[#111]">{price} {currency}</p>
-              <p className="text-[12px] text-[#999] line-through">{(price * 1.3).toFixed(2)} {currency}</p>
+              <p className="text-[14px] font-bold text-[#111]">{currency} {price}</p>
+              <p className="text-[12px] text-[#999] line-through">{currency} {(price * 1.3).toFixed(2)}</p>
             </>
           ) : (
-            <p className="text-[14px] font-bold text-[#111]">{price} {currency}</p>
+            <p className="text-[14px] font-bold text-[#111]">{currency} {price}</p>
           )}
         </div>
         <button className="text-[10px] uppercase tracking-[0.16em] text-[#555] hover:text-harrods-green transition-colors pt-1 inline-flex items-center justify-center gap-1">

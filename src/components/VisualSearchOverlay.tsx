@@ -358,7 +358,7 @@ export const VisualSearchOverlay: React.FC<VisualSearchOverlayProps> = ({
                                     {item.name || item.productData?.name || 'Unknown'}
                                   </p>
                                   <p className="text-sm font-semibold text-black/60 mt-1">
-                                    {item.price || item.dy_display_price || item.productData?.dy_display_price || 'N/A'} {currency}
+                                    {currency} {item.price || item.dy_display_price || item.productData?.dy_display_price || 'N/A'}
                                   </p>
                                 </div>
                               </article>
