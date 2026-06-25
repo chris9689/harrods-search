@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Heart, ShoppingBag, Camera } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { ScoreInfo } from './ScoreInfoIcon';
 import { useConfig } from '../context/ConfigContext';
 
@@ -32,12 +32,12 @@ export const ProductCard: React.FC<ProductCardProps> = ({ item, onVisualSearch }
       onMouseLeave={() => setIsHovered(false)}
       onClick={() => productUrl !== '#' && window.open(productUrl, '_blank')}
     >
-      <div className="relative aspect-3/4 bg-[#eff3ef] overflow-hidden rounded-2xl harrods-card">
+      <div className="relative aspect-3/4 bg-[#f6f6f6] overflow-hidden">
         {imageUrl ? (
           <img 
             src={isHovered ? (secondaryImageUrl || imageUrl) : imageUrl} 
             alt={title}
-            className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
             onError={(e) => {
               (e.target as HTMLImageElement).src = 'https://placehold.co/400x600?text=No+Image';
             }}
@@ -54,7 +54,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ item, onVisualSearch }
         </div>
         
         {item.on_sale && (
-          <div className="absolute top-2 left-2 bg-[#7f1d1d] text-white text-[10px] font-bold px-2 py-1 tracking-wider rounded-sm">
+          <div className="absolute top-3 left-3 bg-black text-white text-[10px] font-bold px-2.5 py-1 tracking-[0.14em] uppercase">
             SALE
           </div>
         )}
@@ -67,57 +67,44 @@ export const ProductCard: React.FC<ProductCardProps> = ({ item, onVisualSearch }
         )}
 
         {/* Wishlist Button */}
-        <button className="absolute top-2 right-2 p-1.5 rounded-full bg-white/70 hover:bg-white transition-colors border border-[#d7e1dc]">
-          <Heart size={18} className={`text-harrods-green group-hover:text-harrods-forest drop-shadow-sm`} />
+        <button className="absolute top-3 right-3 p-1.5 rounded-full bg-white/90 hover:bg-white transition-colors border border-[#e2e2e2]">
+          <Heart size={17} className="text-[#222]" />
         </button>
 
-        {/* Quick Add Overlay - Frosted Glass */}
-        <AnimatePresence>
-          {isHovered && (
-            <motion.div 
-              initial={{ y: '100%' }}
-              animate={{ y: 0 }}
-              exit={{ y: '100%' }}
-              transition={{ duration: 0.3, ease: 'easeOut' }}
-              className="absolute inset-x-0 bottom-0 bg-harrods-cream/95 backdrop-blur-md border-t border-[#d7e1dc] p-4 space-y-2"
-            >
-              <button className="w-full bg-harrods-green text-white py-2 text-[11px] font-bold uppercase tracking-widest flex items-center justify-center gap-2 hover:bg-harrods-forest transition-colors rounded-full">
-                <ShoppingBag size={14} /> Add to Cart
-              </button>
-              {onVisualSearch && (
-                <button 
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    const selectedImageUrl = imageUrl || item.image_url_small || item.imageUrl || '';
-                    if (selectedImageUrl) {
-                      onVisualSearch(selectedImageUrl);
-                    }
-                  }}
-                  className="w-full bg-white/85 text-harrods-green py-2 text-[11px] font-bold uppercase tracking-widest flex items-center justify-center gap-2 hover:bg-white transition-colors border border-harrods-green/25 rounded-full"
-                  title="Search with this product image"
-                >
-                  <Camera size={14} /> Visual Search
-                </button>
-              )}
-            </motion.div>
-          )}
-        </AnimatePresence>
+        {onVisualSearch && isHovered && (
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              const selectedImageUrl = imageUrl || item.image_url_small || item.imageUrl || '';
+              if (selectedImageUrl) {
+                onVisualSearch(selectedImageUrl);
+              }
+            }}
+            className="absolute bottom-3 right-3 bg-white/90 border border-[#dcdcdc] p-2 hover:bg-white transition-colors"
+            title="Search with this product image"
+          >
+            <Camera size={14} className="text-[#333]" />
+          </button>
+        )}
       </div>
 
       {/* Info Container */}
-      <div className="mt-4 space-y-1.5 px-0.5">
-        {brand ? <p className="text-[10px] text-[#5f7269] uppercase tracking-[0.18em] font-semibold">{brand}</p> : null}
-        <h3 className="text-[19px] font-medium text-harrods-green line-clamp-1 leading-tight font-['Cormorant_Garamond']">{title}</h3>
-        <div className="flex items-baseline gap-2">
+      <div className="mt-3 space-y-1">
+        {brand ? <p className="text-[10px] text-[#777] uppercase tracking-[0.15em] font-bold">{brand}</p> : null}
+        <h3 className="text-[13px] font-medium text-[#171717] line-clamp-2 leading-snug">{title}</h3>
+        <div className="flex flex-wrap items-baseline gap-2">
           {item.discount_percentage ? (
             <>
-              <p className="text-[14px] font-extrabold text-[#7f1d1d]">{price} {currency}</p>
-              <p className="text-[11px] text-[#7a8d84] line-through">{(price * 1.3).toFixed(2)} {currency}</p>
+              <p className="text-[14px] font-bold text-[#111]">{price} {currency}</p>
+              <p className="text-[12px] text-[#999] line-through">{(price * 1.3).toFixed(2)} {currency}</p>
             </>
           ) : (
-            <p className="text-[14px] font-extrabold text-harrods-green">{price} {currency}</p>
+            <p className="text-[14px] font-bold text-[#111]">{price} {currency}</p>
           )}
         </div>
+        <button className="text-[10px] uppercase tracking-[0.16em] text-[#555] hover:text-black transition-colors pt-1 inline-flex items-center gap-1">
+          <ShoppingBag size={12} /> Add to bag
+        </button>
       </div>
     </motion.div>
   );

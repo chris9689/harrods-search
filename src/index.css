@@ -20,70 +20,59 @@
     @apply antialiased;
     font-family: 'Manrope', sans-serif;
     color: var(--color-harrods-text);
-    background-color: var(--color-harrods-cream);
-  }
-
-  h1,
-  h2,
-  h3,
-  h4 {
-    font-family: 'Cormorant Garamond', serif;
-    letter-spacing: 0.01em;
+    background-color: #ffffff;
   }
 }
 
 .harrods-page {
-  background:
-    radial-gradient(circle at 10% 0%, rgba(183, 154, 93, 0.14), transparent 40%),
-    radial-gradient(circle at 92% 6%, rgba(23, 59, 47, 0.12), transparent 45%),
-    linear-gradient(180deg, #fbfaf7 0%, #f8f5ef 45%, #f5f1e8 100%);
+  background: #ffffff;
 }
 
 .harrods-header {
-  background: rgba(248, 245, 239, 0.92);
-  border-bottom: 1px solid rgba(23, 59, 47, 0.12);
-  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.98);
+  border-bottom: 1px solid #e6e6e6;
+  backdrop-filter: blur(6px);
 }
 
 .harrods-search-input {
-  background-color: rgba(255, 255, 255, 0.65);
-  border: 1px solid rgba(23, 59, 47, 0.2);
+  background-color: #ffffff;
+  border: 1px solid #d6d6d6;
 }
 
 .harrods-search-input:focus {
-  border-color: var(--color-harrods-green);
-  box-shadow: 0 0 0 3px rgba(23, 59, 47, 0.08);
+  border-color: #222;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.06);
 }
 
 .harrods-pill-button {
-  background: var(--color-harrods-green);
+  background: #111;
   color: #fff;
-  border: 1px solid var(--color-harrods-forest);
+  border: 1px solid #111;
 }
 
 .harrods-pill-button:hover {
-  background: var(--color-harrods-forest);
+  background: #000;
 }
 
 .harrods-subtle-button {
-  border: 1px solid rgba(23, 59, 47, 0.2);
-  color: var(--color-harrods-green);
-  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid #d6d6d6;
+  color: #202020;
+  background: #fff;
 }
 
 .harrods-subtle-button:hover {
-  border-color: var(--color-harrods-green);
+  border-color: #888;
   background: #fff;
 }
 
 .harrods-filter-title {
-  color: var(--color-harrods-forest);
+  color: #111;
   letter-spacing: 0.16em;
 }
 
 .harrods-card {
-  background: rgba(255, 255, 255, 0.75);
-  border: 1px solid rgba(23, 59, 47, 0.1);
+  background: #fff;
+  border: 1px solid #ececec;
 }
 
 .frosted-glass {

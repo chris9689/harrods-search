@@ -92,11 +92,11 @@ export default function App() {
       )}
 
       {/* Brand Header */}
-      <header className="sticky top-0 z-50 harrods-header shadow-sm">
-        <div className="max-w-[1440px] mx-auto px-6 h-20 flex items-center justify-between gap-8">
+      <header className="sticky top-0 z-50 harrods-header">
+        <div className="max-w-[1440px] mx-auto px-6 h-16 flex items-center justify-between gap-8">
           {logoError ? (
             <div className="relative group">
-              <div className="text-4xl font-semibold cursor-pointer select-none pb-2 font-['Cormorant_Garamond'] tracking-wide text-harrods-green">
+              <div className="text-3xl font-bold cursor-pointer select-none text-harrods-green tracking-tight">
                 Harrods
               </div>
               <div className="absolute top-full left-0 -translate-y-3 pt-3 w-44 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity z-50">
@@ -109,7 +109,7 @@ export default function App() {
             </div>
           ) : (
             <div className="relative group">
-              <img src={config.logoUrl || '/logo.png'} alt="Harrods" className="h-10 cursor-pointer select-none pb-2 box-content" onError={() => setLogoError(true)} />
+              <img src={config.logoUrl || '/logo.png'} alt="Harrods" className="h-8 cursor-pointer select-none box-content" onError={() => setLogoError(true)} />
               <div className="absolute top-full left-0 -translate-y-3 pt-3 w-44 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity z-50">
                 <div className="bg-white border border-gray-100 shadow-lg rounded-sm">
                   <a href="/benchmark" className="flex items-center gap-2 px-4 py-3 text-[11px] font-bold uppercase tracking-widest text-gray-600 hover:text-harrods-green hover:bg-harrods-cream transition-colors">
@@ -126,7 +126,7 @@ export default function App() {
                 type="text"
                 value={searchTerm}
                 placeholder="Search for products..."
-                className="w-full harrods-search-input rounded-full py-3 px-12 text-sm transition-all outline-none"
+                className="w-full harrods-search-input rounded-sm py-2.5 px-12 text-sm transition-all outline-none"
                 onChange={handleSearchChange}
               />
               <Search className="absolute left-4 top-3.5 text-[#4b6258] transition-colors" size={18} />
@@ -152,7 +152,7 @@ export default function App() {
             </div>
             <button
               onClick={() => setShowMuseChat(true)}
-              className="h-11 px-4 harrods-pill-button transition-colors rounded-full text-[11px] font-bold uppercase tracking-wider flex items-center gap-2 whitespace-nowrap"
+              className="h-10 px-4 harrods-pill-button transition-colors rounded-sm text-[11px] font-bold uppercase tracking-wider flex items-center gap-2 whitespace-nowrap"
               aria-label="Ask Muse"
             >
               <MessageCircle size={14} />
@@ -176,11 +176,11 @@ export default function App() {
         </div>
       </header>
 
-      <main className="max-w-[1440px] mx-auto px-6 py-12">
+      <main className="max-w-[1440px] mx-auto px-6 py-10">
         {/* Page Title and Sort - High Density Layout */}
-        <div className="flex flex-col md:flex-row justify-between items-baseline gap-4 mb-10">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 mb-8 border-b border-[#ececec] pb-6">
           <div>
-            <nav className="flex items-center gap-2 text-[10px] text-[#5f7269] uppercase tracking-[0.2em] mb-3">
+            <nav className="flex items-center gap-2 text-[10px] text-[#777] uppercase tracking-[0.2em] mb-3">
               {breadcrumbParts.length > 0 ? (
                 breadcrumbParts.map((part, idx) => (
                   <React.Fragment key={`${part}-${idx}`}>
@@ -194,32 +194,32 @@ export default function App() {
                 <span className="text-harrods-green font-bold">Search</span>
               )}
             </nav>
-            <h1 className="text-4xl md:text-5xl font-medium tracking-tight flex flex-wrap items-center gap-4 text-harrods-green">
+            <h1 className="text-3xl md:text-4xl font-extrabold tracking-[0.12em] flex flex-wrap items-center gap-4 text-[#121212] uppercase">
               {debouncedSearch ? `Search Results: ${debouncedSearch}` : 'New Arrivals'}
-              <span className="text-sm text-[#5f7269] font-medium normal-case font-['Manrope']">
+              <span className="text-xs text-[#666] font-semibold normal-case tracking-normal">
                 ({totalNumResults || 0} items{isFallback && <span className="text-red-500 text-[10px] ml-0.5" title="Showing fallback results (affinity profile returned no results)">f</span>})
               </span>
             </h1>
           </div>
           
-          <div className="flex items-center gap-6 text-[11px] font-bold uppercase tracking-[0.15em] text-[#5f7269]">
+          <div className="flex items-center gap-6 text-[11px] font-bold uppercase tracking-[0.15em] text-[#666]">
             <span className="hidden sm:inline">Sort by:</span>
-            <div className="relative group cursor-pointer border-b border-transparent hover:border-harrods-green transition-all">
-              <button className="flex items-center gap-1.5 text-harrods-green py-1">
+            <div className="relative group cursor-pointer border-b border-transparent hover:border-black transition-all">
+              <button className="flex items-center gap-1.5 text-[#111] py-1">
                 Recommended <ChevronDown size={14} />
               </button>
             </div>
           </div>
         </div>
 
-        <div className="flex gap-12">
+        <div className="flex gap-10">
           {/* DY Dynamic Facets Sidebar */}
-          <aside className="hidden lg:block w-64 shrink-0 space-y-10 harrods-card p-6 rounded-2xl h-fit sticky top-24">
+          <aside className="hidden lg:block w-60 shrink-0 space-y-9 h-fit sticky top-20 pr-4">
             {isLoading || isFetching ? (
               Array(4).fill(0).map((_, i) => <SkeletonFilter key={i} />)
             ) : (
               facets.map((facet) => (
-                <div key={facet.key} className="border-t border-[#dfe7e2] pt-8 first:border-t-0 first:pt-0">
+                <div key={facet.key} className="border-t border-[#ececec] pt-7 first:border-t-0 first:pt-0">
                   <h4 className="text-[11px] font-bold uppercase harrods-filter-title mb-5 flex justify-between items-center group cursor-pointer">
                     {facet.title}
                     <ChevronDown size={14} className="group-hover:translate-y-0.5 transition-transform" />
@@ -229,12 +229,12 @@ export default function App() {
                       facet.options.map((opt) => (
                         <label 
                           key={opt.value} 
-                          className="flex items-center gap-3.5 text-[13px] text-[#3d5148] hover:text-harrods-green cursor-pointer group transition-colors"
+                          className="flex items-center gap-3 text-[13px] text-[#333] hover:text-black cursor-pointer group transition-colors"
                         >
                           <div className="relative flex items-center justify-center">
                             <input 
                               type="checkbox" 
-                              className="peer h-4 w-4 border-[#b6c7be] rounded-none checked:bg-harrods-green checked:border-harrods-green transition-all appearance-none border" 
+                              className="peer h-4 w-4 border-[#bdbdbd] rounded-none checked:bg-black checked:border-black transition-all appearance-none border" 
                               checked={selectedFilters.some(f => f.field === facet.key && f.values.includes(opt.value))}
                               onChange={() => toggleFilter(facet.key, opt.value)}
                             />
@@ -245,7 +245,7 @@ export default function App() {
                             </div>
                           </div>
                           <span className="group-hover:translate-x-0.5 transition-transform">{opt.value}</span>
-                          <span className="ml-auto text-[10px] text-[#7a8d84] font-medium">{opt.count != null ? `(${opt.count})` : ''}</span>
+                          <span className="ml-auto text-[10px] text-[#999] font-medium">{opt.count != null ? `(${opt.count})` : ''}</span>
                         </label>
                       ))
                     ) : facet.type === 'number' ? (
@@ -267,7 +267,7 @@ export default function App() {
             {failureCount > 0 && isFetching && (
               <p className="text-[11px] text-gray-400 uppercase tracking-widest mb-4 animate-pulse">Retrying…</p>
             )}
-            <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-6 gap-y-14">
+            <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-7 gap-y-12">
               {isLoading || isFetching ? (
                 Array(12).fill(0).map((_, i) => <SkeletonCard key={i} />)
               ) : (
@@ -330,7 +330,7 @@ export default function App() {
                 >
                   Previous
                 </button>
-                <span className="text-[11px] font-bold text-[#5f7269]">
+                <span className="text-[11px] font-bold text-[#777]">
                   Page {Math.floor(offset / config.itemsPerPage) + 1} / {Math.ceil(totalNumResults / config.itemsPerPage)}
                 </span>
                 <button 
@@ -350,7 +350,7 @@ export default function App() {
       <div className="lg:hidden fixed bottom-8 left-1/2 -translate-x-1/2 z-50">
         <button 
           onClick={() => setIsMobileFilterOpen(true)}
-          className="flex items-center gap-3 harrods-pill-button px-10 py-4 rounded-full text-xs font-bold uppercase tracking-widest shadow-2xl active:scale-95 transition-all"
+          className="flex items-center gap-3 harrods-pill-button px-8 py-3.5 rounded-sm text-xs font-bold uppercase tracking-widest shadow-xl active:scale-95 transition-all"
         >
           <SlidersHorizontal size={18} /> Filter & Sort
         </button>
@@ -372,16 +372,16 @@ export default function App() {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 30, stiffness: 300 }}
-              className="fixed inset-y-0 right-0 w-full max-w-sm bg-harrods-cream z-70 p-6 shadow-2xl flex flex-col"
+              className="fixed inset-y-0 right-0 w-full max-w-sm bg-white z-70 p-6 shadow-2xl flex flex-col"
             >
               <div className="flex justify-between items-center mb-8 pb-4 border-b">
-                <h2 className="text-3xl font-semibold tracking-tight text-harrods-green">Filters</h2>
+                <h2 className="text-2xl font-bold tracking-[0.08em] text-black uppercase">Filters</h2>
                 <button onClick={() => setIsMobileFilterOpen(false)} className="p-2"><X /></button>
               </div>
               <div className="flex-1 overflow-y-auto space-y-8 pr-2">
                 {facets.map((facet) => (
                   <div key={facet.key}>
-                    <h4 className="text-[11px] font-bold uppercase tracking-[0.2em] text-harrods-green mb-5">{facet.title}</h4>
+                    <h4 className="text-[11px] font-bold uppercase tracking-[0.2em] text-black mb-5">{facet.title}</h4>
                     {facet.options && facet.options.length > 0 ? (
                       <div className="grid grid-cols-2 gap-3">
                         {facet.options.map((opt) => (
@@ -390,8 +390,8 @@ export default function App() {
                             onClick={() => toggleFilter(facet.key, opt.value)}
                             className={`text-left px-4 py-3 text-[11px] font-bold uppercase tracking-widest border transition-all ${
                               selectedFilters.some(f => f.field === facet.key && f.values.includes(opt.value))
-                                ? 'bg-harrods-green text-white border-harrods-green'
-                                : 'bg-white/80 text-[#3d5148] border-[#dbe4df]'
+                                ? 'bg-black text-white border-black'
+                                : 'bg-white text-[#333] border-[#ddd]'
                             }`}
                           >
                             {opt.value}
@@ -410,7 +410,7 @@ export default function App() {
               </div>
               <button 
                 onClick={() => setIsMobileFilterOpen(false)}
-                className="mt-6 w-full harrods-pill-button py-4 font-bold uppercase text-xs tracking-widest"
+                className="mt-6 w-full harrods-pill-button py-4 font-bold uppercase text-xs tracking-widest rounded-sm"
               >
                 Show Results
               </button>
