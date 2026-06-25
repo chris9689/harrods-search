@@ -32,13 +32,12 @@ export const ProductCard: React.FC<ProductCardProps> = ({ item, onVisualSearch }
       onMouseLeave={() => setIsHovered(false)}
       onClick={() => productUrl !== '#' && window.open(productUrl, '_blank')}
     >
-      {/* Image Container with Frosted Glass Overlay */}
-      <div className="relative aspect-3/4 bg-gray-100 overflow-hidden">
+      <div className="relative aspect-3/4 bg-[#eff3ef] overflow-hidden rounded-2xl harrods-card">
         {imageUrl ? (
           <img 
             src={isHovered ? (secondaryImageUrl || imageUrl) : imageUrl} 
             alt={title}
-            className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+            className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
             onError={(e) => {
               (e.target as HTMLImageElement).src = 'https://placehold.co/400x600?text=No+Image';
             }}
@@ -54,9 +53,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({ item, onVisualSearch }
           <ScoreInfo item={item} />
         </div>
         
-        {/* SALE Badge - Sinsay Style */}
         {item.on_sale && (
-          <div className="absolute top-2 left-2 bg-sinsay-red text-white text-[10px] font-bold px-2 py-1 tracking-wider">
+          <div className="absolute top-2 left-2 bg-[#7f1d1d] text-white text-[10px] font-bold px-2 py-1 tracking-wider rounded-sm">
             SALE
           </div>
         )}
@@ -69,8 +67,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({ item, onVisualSearch }
         )}
 
         {/* Wishlist Button */}
-        <button className="absolute top-2 right-2 p-1.5 rounded-full hover:bg-white/20 transition-colors">
-          <Heart size={18} className={`text-gray-900 group-hover:text-black drop-shadow-sm`} />
+        <button className="absolute top-2 right-2 p-1.5 rounded-full bg-white/70 hover:bg-white transition-colors border border-[#d7e1dc]">
+          <Heart size={18} className={`text-harrods-green group-hover:text-harrods-forest drop-shadow-sm`} />
         </button>
 
         {/* Quick Add Overlay - Frosted Glass */}
@@ -81,9 +79,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({ item, onVisualSearch }
               animate={{ y: 0 }}
               exit={{ y: '100%' }}
               transition={{ duration: 0.3, ease: 'easeOut' }}
-              className="absolute inset-x-0 bottom-0 frosted-glass p-4 space-y-2"
+              className="absolute inset-x-0 bottom-0 bg-harrods-cream/95 backdrop-blur-md border-t border-[#d7e1dc] p-4 space-y-2"
             >
-              <button className="w-full bg-black text-white py-2 text-[11px] font-bold uppercase tracking-widest flex items-center justify-center gap-2 hover:bg-gray-900 transition-colors">
+              <button className="w-full bg-harrods-green text-white py-2 text-[11px] font-bold uppercase tracking-widest flex items-center justify-center gap-2 hover:bg-harrods-forest transition-colors rounded-full">
                 <ShoppingBag size={14} /> Add to Cart
               </button>
               {onVisualSearch && (
@@ -95,7 +93,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ item, onVisualSearch }
                       onVisualSearch(selectedImageUrl);
                     }
                   }}
-                  className="w-full bg-white/85 text-black py-2 text-[11px] font-bold uppercase tracking-widest flex items-center justify-center gap-2 hover:bg-white transition-colors border border-black/20"
+                  className="w-full bg-white/85 text-harrods-green py-2 text-[11px] font-bold uppercase tracking-widest flex items-center justify-center gap-2 hover:bg-white transition-colors border border-harrods-green/25 rounded-full"
                   title="Search with this product image"
                 >
                   <Camera size={14} /> Visual Search
@@ -107,17 +105,17 @@ export const ProductCard: React.FC<ProductCardProps> = ({ item, onVisualSearch }
       </div>
 
       {/* Info Container */}
-      <div className="mt-3 space-y-1">
-        {brand ? <p className="text-[10px] text-gray-400 uppercase tracking-widest">{brand}</p> : null}
-        <h3 className="text-[13px] font-normal text-gray-800 line-clamp-1 leading-tight">{title}</h3>
+      <div className="mt-4 space-y-1.5 px-0.5">
+        {brand ? <p className="text-[10px] text-[#5f7269] uppercase tracking-[0.18em] font-semibold">{brand}</p> : null}
+        <h3 className="text-[19px] font-medium text-harrods-green line-clamp-1 leading-tight font-['Cormorant_Garamond']">{title}</h3>
         <div className="flex items-baseline gap-2">
           {item.discount_percentage ? (
             <>
-              <p className="text-[14px] font-bold text-sinsay-red">{price} {currency}</p>
-              <p className="text-[11px] text-gray-400 line-through">{(price * 1.3).toFixed(2)} {currency}</p>
+              <p className="text-[14px] font-extrabold text-[#7f1d1d]">{price} {currency}</p>
+              <p className="text-[11px] text-[#7a8d84] line-through">{(price * 1.3).toFixed(2)} {currency}</p>
             </>
           ) : (
-            <p className="text-[14px] font-bold">{price} {currency}</p>
+            <p className="text-[14px] font-extrabold text-harrods-green">{price} {currency}</p>
           )}
         </div>
       </div>
