@@ -22,7 +22,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ item, onVisualSearch }
   for (const priceField of config.mapping.price) {
     const value = item[priceField];
     if (typeof value === 'number' && value > 0) {
-      price = value;
+      price = String(value);
       break;
     }
     if (typeof value === 'string' && value.trim()) {
@@ -109,7 +109,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ item, onVisualSearch }
           {item.discount_percentage ? (
             <>
               <p className="text-[14px] font-bold text-[#111]">{currency} {price}</p>
-              <p className="text-[12px] text-[#999] line-through">{currency} {(price * 1.3).toFixed(2)}</p>
+              <p className="text-[12px] text-[#999] line-through">{currency} {(Number(price) * 1.3).toFixed(2)}</p>
             </>
           ) : (
             <p className="text-[14px] font-bold text-[#111]">{currency} {price}</p>
