@@ -16,7 +16,20 @@ export const ProductCard: React.FC<ProductCardProps> = ({ item, onVisualSearch }
   if (!item) return null;
 
   const title = item.name || item.productName || 'Unknown Product';
-  const price = item.price !== undefined ? item.price : (item.dy_display_price || '0.00');
+  
+  // Use priority list from config to find first valid price
+  let price = '0.00';
+  for (const priceField of config.mapping.price) {
+    const value = item[priceField];
+    if (typeof value === 'number' && value > 0) {
+      price = value;
+      break;
+    }
+    if (typeof value === 'string' && value.trim()) {
+      price = value.trim();
+      break;
+    }
+  }
   const imageUrl = item.image_url || item.image_url_small || item.imageUrl || '';
   const productUrl = item.url || item.product_url || '#';
   const brand = typeof item.brand === 'string' ? item.brand.trim() : '';
